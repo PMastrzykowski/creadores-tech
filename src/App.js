@@ -1,67 +1,45 @@
-import React, { useState, useRef } from 'react'
-import logo from './logo.svg';
+import React, { Component, useRef } from 'react'
 import './styles/all-styles.scss';
-import { useTransition, useSpring, useChain, config, animated } from 'react-spring'
+import {TimelineMax, Elastic, Power3} from 'gsap';
 
-function App() {
-  // const props = useSpring({
-  //   opacity: 1,
-  //   config: { duration: 3000 }, from: { opacity: 0 }
-  // })
-  // const props2 = useSpring({
-  //   number: 1,
-  //   config: { duration: 3000, precision: 0.01 }, from: { number: 0 }
-  // })
-  // const { o, xyz, color } = useSpring({
-  //   from: { o: 0, xyz: [0, 0, 0], color: 'red' },
-  //   config: { duration: 5000 },
-  //   o: 1,
-  //   xyz: [10, 20, 5],
-  //   color: 'green'
-  // })
-  const bigLogoRef = useRef()
-  const bigLogo = useSpring({
-    ref: bigLogoRef,
-    config: { mass: 1, tension: 200, friction: 30},
-    from: { width: '0%', background: '#ffffff' },
-    to: { width: '100%', background: '#295b6e' }
-  })
-  const bigLogoWrapperRef = useRef()
-  const bigLogoWrapper = useSpring({
-    ref: bigLogoWrapperRef,
-    config: { mass: 1, tension: 300, friction: 12},
-    from: { opacity: '0', transform: 'scale(0)' },
-    to: { opacity: '1', transform: 'scale(1)' }
-  })
-  const bigLogoStrokeRef = useRef()
-  const bigLogoStroke = useSpring({
-    ref: bigLogoStrokeRef,
-    config: { mass: 1, tension: 300, friction: 50},
-    from: { height: '100%' },
-    to: { height: '0%' }
-  })
-  // const props3 = useSpring({
-  //   to: async (next, cancel) => {
-  //     await next({ opacity: 1, color: '#ffaaee', config: { duration: 3000 } })
-  //     await next({ opacity: 0, color: 'rgb(14,26,19)', config: { duration: 500 } })
-  //   },
-  //   from: { opacity: 0, color: 'red' }
-  // })
-  useChain([bigLogoRef, bigLogoWrapperRef, bigLogoStrokeRef], [0.1, 0.7, 1])
-
-  return (
-    <div id="App">
-      <header className="App-header">
-        
-      </header>
-      <animated.div style={bigLogo} className='frontLayer'>
-        <animated.div style={bigLogoWrapper} className='big-logo-wrapper'>
-          <animated.div style={bigLogoStroke} className='big-logo-stroke' />
-          <div className='big-logo-filled'/>
-        </animated.div>
-      </animated.div>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+     this.enterAnimation = new TimelineMax();
+  }
+  componentDidMount = () => {
+    this.enterAnimation
+    .fromTo(this.frontLayer, .6, {width: '0', opacity: 0}, {width: '100%', opacity: 1}, 0.2)
+    .fromTo(this.bigLogoWrapper, .6, {opacity: '0', scale: 0}, {opacity: '1', scale: 1, ease: Elastic.easeOut.config(0.9, 0.6)})
+    .fromTo(this.bigLogoStroke, .5, {height: '100%'}, {height: '1%'}, '=-0.1')
+    .to(this.bigLogoWrapper, 1, {scale: 0, ease: Elastic.easeIn.config(0.9, 0.6), delay: 0.3})
+    .to(this.frontLayer, 0.6, {height: 0, ease: Power3.easeOut})
+    .set(this.appHeader, {display: 'block'})
+    .to(this.appHeader, 0.6, {background: '#8CCED8'})
+  }
+  render = () => {
+    return (
+      <div id="App">
+        <header id="app-header" ref={div => this.appHeader = div}>
+          <div className='navigation'>
+            <div className='navigation-logo' />
+            <div className='navigation-menu'>
+              <button>Estimate project</button>
+              <button className='contact'>Contact</button>
+            </div>
+          </div>
+        </header>
+        <div className='frontLayer' ref={div => this.frontLayer = div}>
+          <div className='big-logo-wrapper' ref={div => this.bigLogoWrapper = div}>
+            <div className='big-logo-stroke' ref={div => this.bigLogoStroke = div}/>
+            <div className='big-logo-filled'/>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
