@@ -1,0 +1,73 @@
+button {
+  background: none;
+  padding: 20px 30px;
+  border: 0;
+  outline: none;
+  position: relative;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: $font-1;
+  &.round {
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    margin: 40px 0;
+    transition: all 0.2s;
+    &:hover {
+      background: #ffffff;
+      color: #8cced8;
+    }
+  }
+  &.expanding {
+    &::before {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      transition: all 0.2s;
+      height: 4px;
+      width: 30px;
+      content: "";
+      background: $color-2;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+.scroll {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  color: $color-2;
+  cursor: pointer;
+  #text {
+    font-size: 16px;
+  }
+  #arrow-wrapper {
+    #arrow {
+      width: 15px;
+      height: 15px;
+      border-width: 0 1px 1px 0;
+      border-color: $color-2;
+      border-style: solid;
+      transform: rotate(45deg);
+    }
+    animation: move-down 4s infinite;
+    transition-timing-function: ease-in-out;
+  }
+  @keyframes move-down {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+}

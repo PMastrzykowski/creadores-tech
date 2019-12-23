@@ -1,4 +1,8 @@
-html{
+$color-1: #e42e65;
+$color-2: #ffffff;
+$color-3: #0d2b36;
+$font-1: "Montserrat", sans-serif;
+html {
   font-size: 100%;
 }
 body,
@@ -9,75 +13,122 @@ body,
   min-width: 100vw;
   height: 100%;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-1;
 }
 #root {
   overflow: hidden;
 }
-.content-wrapper{
+.content-wrapper {
   display: none;
 }
-#app-header{
+#app-header {
   width: 100vw;
-  height: 100vh;
-  &::before{
-    left: 64px;
-  }
-  &::after{
-    right: 64px;
-  }
-  &::before, &::after{
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    background: rgba(255, 255, 255,0.2);
-    top: 0;
-  }
-  .navigation{
+  color: $color-1;
+  .navigation {
     @include flexbox();
     @include align-items(center);
     @include justify-content(space-between);
-    padding: 72px 66px;
-    .navigation-logo{
-      background: url("./logo-big-white.svg");
+    padding: 30px;
+    margin: 0 auto;
+    .navigation-logo {
+      background: url("./creadores-logo-pink-small.svg");
       background-size: 80px 77px;
       width: 80px;
       height: 77px;
       margin: 0 20px;
     }
+    button {
+      color: $color-1;
+      margin: 0 30px;
+    }
   }
 }
-#section-1{
+#section-short {
+  height: calc(100vh - 137px);
+  width: 100vw;
   @include flexbox();
   @include align-items(center);
   @include justify-content(center);
+}
+.rainbow {
+  background: url("./rainbow.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logo-white-medium {
+  background: url("./creadores-logo-white-medium.svg");
+  background-size: 247px 213px;
+  width: 247px;
+  height: 213px;
+}
+section {
   height: 100vh;
   width: 100vw;
   position: relative;
-  .left-side{
-    background: #F0F0F0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 100%;
-    z-index:0;
-  }
-  .text{
-    z-index:1;
+  color: $color-2;
+  @include flexbox();
+}
+#section-1 {
+  background: rgb(53, 237, 209);
+  background: linear-gradient(138deg, rgba(53, 237, 209, 1) 0%, rgba(52, 160, 239, 1) 100%);
+  @include align-items(center);
+  @include justify-content(center);
+  .text {
+    z-index: 1;
     width: 70%;
     padding: 0 20px;
-    font-size: 3rem
+    font-size: 3rem;
+  }
+}
+.example {
+  .images, .info {
+    width: 50%;
+    @include flexbox();
+    box-sizing: border-box;
+    position: relative;
+  }
+  .images{
+    @include justify-content(space-around);
+    padding-top: 30px;
+    img{
+      max-width: 50%;
+    }
+  }
+  .info{
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    .text {
+      z-index: 1;
+      width: 70%;
+      padding: 0 20px;
+      font-size: 3rem;
+    }
+  }
+}
+#section-2 {
+  .info {
+    background: rgb(178, 221, 245);
+    background: linear-gradient(138deg, rgba(178, 221, 245, 1) 0%, rgba(52, 68, 83, 1) 100%);
+  }
+  .images {
+  }
+}
+#section-3 {
+  .info {
+    background: rgb(6, 10, 19);
+    background: linear-gradient(138deg, rgba(6, 10, 19, 1) 0%, rgba(94, 116, 163, 1) 100%);
+  }
+  .images {
   }
 }
 .frontLayer {
   @include flexbox();
   @include align-items(center);
   @include justify-content(center);
-  @include shadow(10px, 0px, 80px, 1px, rgba(0,0,0,0.5));
+  @include shadow(10px, 0px, 80px, 1px, rgba(0, 0, 0, 0.5));
   position: absolute;
-  background: #295b6e;
+  background: $color-1;
   top: 0px;
   left: 0px;
   height: 100%;
@@ -86,57 +137,43 @@ body,
   .big-logo-wrapper {
     margin: 20px;
     position: relative;
-    width: 319px;
-    height: 308px;
+    width: 247px;
+    height: 213px;
     .big-logo-stroke {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url("./logo-big-stroke.svg");
+      background: url("./creadores-logo-white-medium-stroke.svg");
     }
     .big-logo-filled {
       width: 100%;
       height: 100%;
-      background: url("./logo-big.svg");
+      background: url("./creadores-logo-white-medium.svg");
     }
   }
 }
-button{
-    background: none;
-    padding: 20px 30px;
-    border: 0;
-    outline: none;
-    position: relative;
-    font-size: 16px;
-    color: #ffffff;
-    cursor: pointer;
-  &.estimate{
-    border: 1px solid #ffffff;
-    border-radius: 50px;
-    margin: 0 20px;
-    transition: all .2s;
-    &:hover{
-      background: #ffffff;
-      color: #8CCED8;
-    }
+footer {
+  @include flexbox();
+  @include justify-content(space-around);
+  padding: 120px 40px;
+  box-sizing: border-box;
+  width: 100vw;
+  background: $color-3;
+  color: $color-2;
+  .title {
+    font-weight: 500;
+    margin-bottom: 40px;
   }
-  &.contact{
-    &::before{
-      position: absolute;
-      top: 0;
-      right: 0;
-      transition: all .2s;
-      height: 100%;
-      width: 40px;
-      content: '';
-      background: rgba(255, 255, 255,0.2);
-    }
-    &:hover{
-      &::before{
-        width: 100%;
-      }
+  ul {
+    list-style: none;
+    padding: 0;
+    font-weight: 400;
+    li {
+      font-size: 14px;
+      margin: 20px 0;
+      cursor: pointer;
     }
   }
 }
