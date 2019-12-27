@@ -84,9 +84,6 @@ button {
     padding: 0!important;
     }
   }
-  #section-short{
-    height: calc(100vh - 77px)!important;
-  }
   .example{
     @include flex-direction(column);
     .info, .images{
@@ -104,6 +101,7 @@ button {
     }
   }
   .scroll{
+    display: none;
     left: 10px;
     bottom: 20px;
     #text{
@@ -132,9 +130,15 @@ button {
   }
   footer{
     @include flex-direction(column);
-    scroll-snap-align: start!important;
-    div{
-      margin: 25px 0;
+    height: 100%;
+    .logo-white-medium{
+      display: none;
+    }
+    div, ul, li{
+      margin: 0!important;
+    }
+    .title{
+      margin: 10px 0!important;
     }
   }
 }

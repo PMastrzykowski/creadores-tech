@@ -1,5 +1,6 @@
 import React, { Component, useRef } from 'react'
 import './styles/all-styles.scss';
+import Div100vh from 'react-div-100vh';
 import {TimelineMax, Elastic, Power3, gsap} from 'gsap';
 import Layout from './components/layout';
 import Landing from './components/landing';
@@ -22,6 +23,7 @@ class App extends Component {
   }
   render = () => {
     return (
+      <Div100vh>
       <div id="App">
         <div className='content-wrapper' ref={div => this.contentWrapper = div}>
         <Layout>
@@ -35,6 +37,7 @@ class App extends Component {
           </div>
         </div>
       </div>
+      </Div100vh>
     )
   }
 }
