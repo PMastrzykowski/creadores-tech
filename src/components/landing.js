@@ -2,7 +2,7 @@ import React, { Component, useRef } from 'react'
 import ScrollDown from './scroll-down';
 import Div100vh from 'react-div-100vh';
 import { Waypoint } from 'react-waypoint';
-import { TimelineMax, Elastic, Power3, gsap } from 'gsap';
+import { gsap } from 'gsap';
 
 class Landing extends Component {
     constructor(props) {
@@ -117,25 +117,26 @@ class Landing extends Component {
                     <section id='section-short' className='rainbow'>
                         <div className='logo-white-medium' />
                         <Waypoint onEnter={() => this._handleWaypointEnter(0)} onLeave={() => this._handleWaypointLeave(0)} />
+                        <ScrollDown onClick={() => this.props.setScroll(this.section1wrapper.getBoundingClientRect().top)} />
                     </section>
                 </Div100vh>
                 <Div100vh className='snap'>
-                    <section id='section-1'>
+                    <section id='section-1' ref={e => this.section1wrapper = e}>
                         <div className='text' id='section1text' ref={e => this.section1text = e}><div>We tailor products that help you sell better.
 Using top technologies we <u>design, build, ship and maintain</u> your digital apps and websites.</div>
                             <Waypoint onEnter={() => this._handleWaypointEnter(1)} onLeave={() => this._handleWaypointLeave(1)} />
                             <button className='round'>Estimate</button></div>
-                        <ScrollDown />
+                        <ScrollDown onClick={() => this.props.setScroll(this.section2wrapper.getBoundingClientRect().top * 2)} />
                     </section>
                 </Div100vh>
                 <Div100vh className='snap'>
-                    <section id='section-2' className='example'>
+                    <section id='section-2' className='example' ref={e => this.section2wrapper = e}>
                         <div className='info' ref={e => this.section2info = e}>
                             <Waypoint onEnter={() => this._handleWaypointEnter(2)} onLeave={() => this._handleWaypointLeave(2)} />
                             <div className='text'><div>Goal management web app
 crafted for teams and ambitious individuals.</div>
                                 <button className='expanding'>Read the success story</button></div>
-                            <ScrollDown />
+                            <ScrollDown onClick={() => this.props.setScroll(this.section3wrapper.getBoundingClientRect().top * 3)} />
                         </div>
                         <div className='images' ref={e => this.section2images = e}>
                             <img src='./goalsio-example-1.svg' ref={e => this.section2image1 = e} />
@@ -144,7 +145,7 @@ crafted for teams and ambitious individuals.</div>
                     </section>
                 </Div100vh>
                 <Div100vh className='snap'>
-                    <section id='section-3' className='example'>
+                    <section id='section-3' className='example' ref={e => this.section3wrapper = e}>
                         <div className='images'>
                             <Waypoint onEnter={() => this._handleWaypointEnter(3)} onLeave={() => this._handleWaypointLeave(3)} />
                             <img src='./karolmierzwa-example-1.svg' ref={e => this.section3image1 = e} />
@@ -153,12 +154,12 @@ crafted for teams and ambitious individuals.</div>
                         <div className='info' ref={e => this.section3info = e}>
                             <div className='text'><div>Complete philosophy blog</div>
                                 <button className='expanding'>Read the success story</button></div>
-                            <ScrollDown />
+                            <ScrollDown onClick={() => this.props.setScroll(this.section4wrapper.getBoundingClientRect().top * 4)} />
                         </div>
                     </section>
                 </Div100vh>
                 <Div100vh className='snap'>
-                    <section id='section-4'>
+                    <section id='section-4' ref={e => this.section4wrapper = e}>
                         <div className='text' ref={e => this.section4text = e}>
                             How we do it
                             <Waypoint onEnter={() => this._handleWaypointEnter(4)} onLeave={() => this._handleWaypointLeave(4)} />
@@ -175,7 +176,7 @@ crafted for teams and ambitious individuals.</div>
                             <Waypoint onEnter={() => this._handleWaypointEnter(5)} onLeave={() => this._handleWaypointLeave(5)} />
                             <div className='text'><div>Our stack</div>
                                 <div className='description'>With modern technologies we use, we can create whatever you imagine. Depending on your needs we will customize the tools.</div></div>
-                            <ScrollDown />
+                            <ScrollDown onClick={() => this.props.setScroll(this.section6wrapper.getBoundingClientRect().top * 6)} />
                         </div>
                         <div className='images' ref={e => this.section5images = e}>
                             <img src='./react-logo.svg' />
@@ -188,7 +189,7 @@ crafted for teams and ambitious individuals.</div>
                     </section>
                 </Div100vh>
                 <Div100vh className='snap'>
-                    <section id='section-6'>
+                    <section id='section-6' ref={e => this.section6wrapper = e}>
                         <div>Let's get started</div>
                         <button className='round'>Estimate</button>
                     </section>

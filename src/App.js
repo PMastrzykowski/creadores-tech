@@ -21,13 +21,16 @@ class App extends Component {
     .set(this.contentWrapper, {display: 'block', opacity: 0})
     .to(this.contentWrapper, {opacity: 1, duration: .6})
   }
+  setScroll = (value) => {
+      this.contentWrapper.scrollTop = value;
+  }
   render = () => {
     return (
       <Div100vh>
       <div id="App">
         <div className='content-wrapper' ref={div => this.contentWrapper = div}>
         <Layout>
-          <Landing/>
+          <Landing setScroll={this.setScroll}/>
           </Layout>
         </div>
         <div className='frontLayer' ref={div => this.frontLayer = div}>
