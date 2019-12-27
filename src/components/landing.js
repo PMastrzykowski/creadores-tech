@@ -30,6 +30,7 @@ class Landing extends Component {
         this.scrollAnimation = gsap.timeline();
     }
     componentDidMount = () => {
+        return
         this.scrollAnimation
             .to(this.section1text, { y: '100px', opacity: 0, duration: .01 })
             .to(this.section2info, { left: '-100%', opacity: 0, duration: .1 }, 0)
@@ -44,6 +45,7 @@ class Landing extends Component {
             .to(this.section5images, { right: '-100%', opacity: 0, duration: .1 }, 0)
     }
     _handleWaypointEnter = (point) => {
+        return
         switch (point) {
             case 1:
                 this.scrollAnimation
