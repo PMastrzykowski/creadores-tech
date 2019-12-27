@@ -120,9 +120,21 @@ button {
   .tale{
     font-size: 10px;
   }
+  #section-3{
+    .info{
+      order: -1;
+    }
+  }
   #section-5{
     .description{
     font-size: 10px!important;
+    }
+  }
+  footer{
+    @include flex-direction(column);
+    scroll-snap-align: start!important;
+    div{
+      margin: 25px 0;
     }
   }
 }
