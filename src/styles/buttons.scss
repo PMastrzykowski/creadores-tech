@@ -71,3 +71,58 @@ button {
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .navigation-menu{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #app-header{
+    .navigation{
+    padding: 0!important;
+    }
+  }
+  #section-short{
+    height: calc(100vh - 77px)!important;
+  }
+  .example{
+    @include flex-direction(column);
+    .info, .images{
+      height: 50%;
+      width: 100%;
+      .text{
+        font-size: 1rem;
+      }
+    }
+  }
+  section{
+    .text{
+      font-size: 1rem!important;
+
+    }
+  }
+  .scroll{
+    left: 10px;
+    bottom: 20px;
+    #text{
+    font-size: 10px;
+
+    }
+  }
+  .expanding{
+    font-size: 10px;
+  }
+  .round{
+    font-size: 10px;
+  }
+  .tale{
+    font-size: 10px;
+  }
+  #section-5{
+    .description{
+    font-size: 10px!important;
+    }
+  }
+}
