@@ -3,6 +3,12 @@ import ScrollDown from './scroll-down';
 import Div100vh from 'react-div-100vh';
 import { Waypoint } from 'react-waypoint';
 import { gsap } from 'gsap';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 class Landing extends Component {
     constructor(props) {
@@ -110,6 +116,9 @@ class Landing extends Component {
                 break;
         }
     }
+    componentDidMount = () => {
+        window.scrollTo(0, 0);
+    }
     render = () => {
         return (
             <>
@@ -125,7 +134,7 @@ class Landing extends Component {
                         <div className='text' id='section1text' ref={e => this.section1text = e}><div>We tailor products that help you sell better.
 Using top technologies we <u>design, build, ship and maintain</u> your digital apps and websites.</div>
                             <Waypoint onEnter={() => this._handleWaypointEnter(1)} onLeave={() => this._handleWaypointLeave(1)} />
-                            <button className='round'>Estimate</button></div>
+                            <Link to='/estimate'><button className='round'>Estimate</button></Link></div>
                         <ScrollDown onClick={() => this.props.setScroll(this.section2wrapper.getBoundingClientRect().top * 2)} />
                     </section>
                 </Div100vh>
@@ -191,7 +200,7 @@ crafted for teams and ambitious individuals.</div>
                 <Div100vh className='snap'>
                     <section id='section-6' ref={e => this.section6wrapper = e}>
                         <div>Let's get started</div>
-                        <button className='round'>Estimate</button>
+                        <Link to='/estimate'><button className='round'>Estimate</button></Link>
                     </section>
                 </Div100vh>
             </>

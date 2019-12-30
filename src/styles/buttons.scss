@@ -11,12 +11,18 @@ button {
   &.round {
     border: 1px solid #ffffff;
     border-radius: 50px;
-    margin: 40px 0;
     transition: all 0.2s;
+    margin: 40px 0;
+    &.center{
+      margin: 40px auto;
+    }
     &:hover {
       background: #ffffff;
       color: #8cced8;
     }
+  }
+  &.center{
+    margin: 40px auto;
   }
   &.expanding {
     &::before {
@@ -71,14 +77,27 @@ button {
     }
   }
 }
-
 @media only screen and (max-width: 1000px) {
   .navigation-menu{
     display: none;
   }
+  #estimate{
+    margin-top: 77px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  #estimate{
+    .tales{
+      @include flex-direction(column);
+      label{
+        width: 100%!important;
+      }
+      .tale{
+        margin: 10px auto;
+      }
+    }
+  }
   #app-header{
     .navigation{
     padding: 0!important;
@@ -115,6 +134,9 @@ button {
   .round{
     font-size: 10px;
   }
+  .center {
+    margin: 50px auto;
+  }
   .tale{
     font-size: 10px;
   }
@@ -128,7 +150,7 @@ button {
     font-size: 10px!important;
     }
   }
-  footer{
+  footer .set-width{
     @include flex-direction(column);
     height: 100%;
     .logo-white-medium{

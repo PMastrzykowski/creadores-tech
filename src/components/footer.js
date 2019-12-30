@@ -44,6 +44,7 @@ const services = [
     }
 ]
 const Footer = () => <footer>
+    <div className='set-width'>
     <div className='logo-white-medium'/>
     <div>
         <div className='title'>Menu</div>
@@ -66,6 +67,7 @@ const Footer = () => <footer>
         <div>
             hi@creadores.tech
         </div>
+    </div>
     </div>
 </footer>
 

@@ -1,6 +1,8 @@
 $color-1: #e42e65;
 $color-2: #ffffff;
 $color-3: #0d2b36;
+$color-4: #cecece;
+$color-5: #ffeb00;
 $font-1: "Montserrat", sans-serif;
 html {
   font-size: 100%;
@@ -13,10 +15,10 @@ body,
   min-width: 100vw;
   height: 100%;
   font-family: $font-1;
-  overflow: hidden;
+  // overflow: hidden;
 }
 #root {
-  overflow: hidden;
+  // overflow: hidden;
 }
 .content-wrapper {
   position: relative;
@@ -204,7 +206,7 @@ section {
   @include justify-content(center);
   @include flex-direction(column);
   font-size: 60px;
-  div{
+  div {
     text-align: center;
   }
 }
@@ -241,14 +243,16 @@ section {
   }
 }
 footer {
-  @include flexbox();
-  @include justify-content(space-around);
-  overflow: scroll;
   padding: 120px 40px;
   box-sizing: border-box;
   width: 100vw;
   background: $color-3;
   color: $color-2;
+  .set-width {
+    @include flexbox();
+    @include justify-content(space-around);
+    overflow: scroll;
+  }
   .title {
     font-weight: 500;
     margin-bottom: 40px;
@@ -262,5 +266,282 @@ footer {
       margin: 20px 0;
       cursor: pointer;
     }
+  }
+}
+#estimate {
+  background: rgb(243, 89, 89);
+  background: linear-gradient(138deg, rgba(243, 89, 89, 1) 0%, rgba(220, 90, 199, 1) 100%);
+  color: $color-2;
+  margin-top: 137px;
+  padding-bottom: 100px;
+  .content {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    padding-top: 100px;
+    form {
+      margin-top: 100px;
+    }
+    button {
+      padding: 30px 50px;
+      font-size: 30px;
+    }
+    .section {
+      margin-top: 100px;
+      width: 100%;
+      text-align: center;
+      .tales {
+        @include flexbox();
+        @include justify-content(space-around);
+        width: 100%;
+        margin: 100px 0 0 0;
+        input {
+          display: none;
+          &:checked ~ .tale {
+            transform: scale(1.05);
+            @include shadow(0, 16px, 20px, 0, rgba(0, 0, 0, 0.2));
+            .checkmark {
+              border: 1px solid rgb(240, 46, 46);
+              background: rgb(240, 46, 46);
+              background: linear-gradient(138deg, rgba(240, 46, 46, 1) 0%, rgba(211, 47, 186, 1) 100%);
+              &::before {
+                content: "";
+                width: 8px;
+                height: 2px;
+                background: #ffffff;
+                position: absolute;
+                top: 16px;
+                left: 8px;
+                transform: rotate(45deg);
+              }
+              &::after {
+                content: "";
+                width: 15px;
+                height: 2px;
+                background: #ffffff;
+                position: absolute;
+                top: 13px;
+                left: 11px;
+                transform: rotate(-50deg);
+              }
+            }
+          }
+        }
+        label {
+          width: 30%;
+        }
+        .tale {
+          @include flexbox();
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include align-items(center);
+          max-width: 300px;
+          height: 300px;
+          background: $color-2;
+          border-radius: 10px;
+          color: $color-3;
+          position: relative;
+          cursor: pointer;
+          @include shadow(0, 8px, 20px, 0, rgba(0, 0, 0, 0.2));
+          transition: 0.5s all;
+          .checkmark {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 1px solid $color-4;
+            right: 20px;
+            top: 20px;
+            border-radius: 5px;
+          }
+          .tongue {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          }
+          .icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 25px;
+          }
+          &.desktop {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #d32fba;
+            }
+            .icon {
+              @include sprite(0, 0);
+            }
+          }
+          &.mobile {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #0025ef;
+            }
+            .icon {
+              @include sprite(-80px, 0);
+            }
+          }
+          &.other {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #00ff0a;
+            }
+            .icon {
+              @include sprite(-160px, 0);
+            }
+          }
+          &.frontend {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #ff9300;
+            }
+            .icon {
+              @include sprite(-240px, 0);
+            }
+          }
+          &.backend {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #2fc0d3;
+            }
+            .icon {
+              @include sprite(-320px, 0);
+            }
+          }
+          &.design {
+            .color-1 {
+              stop-color: #f02e2e;
+            }
+            .color-2 {
+              stop-color: #fff500;
+            }
+            .icon {
+              @include sprite(-400px, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.set-width {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+h1 {
+  font-size: 3em;
+}
+form {
+  .floating-label-wrap {
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 1em;
+    &.error {
+      input,
+      textarea {
+        border-color: $color-2;
+      }
+      label {
+        color: $color-2;
+      }
+    }
+  }
+  margin: 100px 0;
+  width: 90%;
+  max-width: 800px;
+  label,
+  input,
+  textarea {
+    transition: all 0.2s;
+    touch-action: manipulation;
+  }
+  input,
+  textarea {
+    font-size: 1.3em;
+    background: none;
+    width: 100%;
+    border: 0;
+    color: $color-2;
+    border-bottom: 1px solid $color-2;
+    font-family: inherit;
+    -webkit-appearance: none;
+    border-radius: 0;
+    padding: 15px 0;
+    cursor: text;
+    resize: none;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 0;
+  }
+
+  label {
+    letter-spacing: 0.05em;
+    font-size: 15px;
+    pointer-events: none;
+  }
+  textarea {
+    min-height: 100px;
+  }
+  /**
+    * Translate down and scale the label up to cover the placeholder,
+    * when following an input (with placeholder-shown support).
+    * Also make sure the label is only on one row, at max 2/3rds of the
+    * field—to make sure it scales properly and doesn't wrap.
+    */
+  input:placeholder-shown + label,
+  textarea:placeholder-shown + label {
+    cursor: text;
+    max-width: 66.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 3.125rem) scale(1.5);
+  }
+  /**
+    * By default, the placeholder should be transparent. Also, it should 
+    * inherit the transition.
+    */
+  ::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+  /**
+    * Show the placeholder when the input is focused.
+    */
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+  /**
+    * When the element is focused, remove the label transform.
+    * Also, do this when the placeholder is _not_ shown, i.e. when 
+    * there's something in the input at all.
+    */
+  input:not(:placeholder-shown) + label,
+  input:focus + label,
+  textarea:not(:placeholder-shown) + label,
+  textarea:focus + label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
   }
 }
